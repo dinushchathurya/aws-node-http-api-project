@@ -19,11 +19,11 @@ const addToDo = async (event) => {
     await dynamoddb.put({
         TableName: "ToDoTable",
         Item: newToDo
-    })
+    }).promise();
 
     return {
         statusCode: 200,
-        body: JSON.stringify(newToDo ),
+        body: JSON.stringify(newToDo),
     };
 };
 
