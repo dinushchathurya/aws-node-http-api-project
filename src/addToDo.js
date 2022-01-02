@@ -3,7 +3,7 @@ const AWS = require("aws-sdk");
 
 const addToDo = async (event) => {
 
-    const dynamoddb = new AWS.DynamoDB.DocumentClient();
+    const dynamodb = new AWS.DynamoDB.DocumentClient();
 
     const { todo } = JSON.parse(event.body);
     const createdAt = new Date().toISOString();
@@ -16,7 +16,7 @@ const addToDo = async (event) => {
         completed: false
     }
     
-    await dynamoddb.put({
+    await dynamodb.put({
         TableName: "ToDoTable",
         Item: newToDo
     }).promise();
